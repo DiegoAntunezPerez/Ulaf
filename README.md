@@ -11,7 +11,7 @@ La aplicación está desplegada y disponible en:
 
 - **Frontend**: https://ulaf.netlify.app
 - **Backend API**: https://ulaf-cwvp.onrender.com/api
-- **Repositorio GitHub**: https://github.com/DiegoAntunezPerez/Ulaf.git
+- **Repositorio GitHub**: https://github.com/DiegoAntunezPerez/Ulaf
 
 ---
 

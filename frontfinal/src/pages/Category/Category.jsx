@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { API_URL } from '../../utils/constants';
 import './Category.css';
 
 const Category = () => {
@@ -11,7 +12,7 @@ const Category = () => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:4000/api/articulos?categoria=${categoryName}`);
+        const res = await fetch(`${API_URL}/articulos?categoria=${categoryName}`);
         const data = await res.json();
         setProducts(data.articulos || []);
       } catch {

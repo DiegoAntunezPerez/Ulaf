@@ -2,6 +2,7 @@ import './Login.css';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { API_URL } from '../../utils/constants';
 import useAuthStore from '../../store/authStore';
 
 const Login = () => {
@@ -16,7 +17,7 @@ const Login = () => {
     setServerError('');
     setSuccess(false);
     try {
-      const response = await fetch('http://localhost:4000/api/users/login', {
+      const response = await fetch(`${API_URL}/users/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

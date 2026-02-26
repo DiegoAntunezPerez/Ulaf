@@ -1,6 +1,7 @@
 import './Register.css';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { API_URL } from '../../utils/constants';
 
 const Register = () => {
   const { handleSubmit, register, formState } = useForm();
@@ -12,7 +13,7 @@ const Register = () => {
     setServerError('');
     setSuccess(false);
     try {
-      const response = await fetch('http://localhost:3001/api/usuarios/register', {
+      const response = await fetch(`${API_URL}/users/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

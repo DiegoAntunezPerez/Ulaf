@@ -60,7 +60,7 @@ const Home = () => {
       <section className="hero">
         <div className="hero-video-wrapper">
           <video
-            src="/public/UlafBanner.mp4"
+            src="/UlafBanner.mp4"
             autoPlay
             loop
             muted

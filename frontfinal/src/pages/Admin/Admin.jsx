@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { API_URL } from '../../utils/constants';
 import useAuthStore from '../../store/authStore';
 import './Admin.css';
 
@@ -65,7 +66,7 @@ const Admin = () => {
         formData.append('imagen', imageFile);
       }
 
-      const response = await fetch('http://localhost:4000/api/articulos', {
+      const response = await fetch(`${API_URL}/articulos`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`

@@ -1,9 +1,10 @@
 import useFetch from '../../hooks/useFetch';
+import { API_URL } from '../../utils/constants';
 import './About.css';
 
 const About = () => {
   // Usar hook personalizado para obtener estadísticas de productos
-  const { data, loading } = useFetch('http://localhost:4000/api/articulos?limit=1000');
+  const { data, loading } = useFetch(`${API_URL}/articulos?limit=1000`);
   
   const stats = data ? {
     totalProductos: data.articulos?.length || 0,

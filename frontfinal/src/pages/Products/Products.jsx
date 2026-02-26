@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ProductCard from '../../components/ProductCard/ProductCard';
-import { CATEGORIES } from '../../utils/constants';
+import { CATEGORIES, API_URL } from '../../utils/constants';
 import './Products.css';
 
 const Products = () => {
@@ -15,8 +15,8 @@ const Products = () => {
     try {
       setLoading(true);
       const url = category 
-        ? `http://localhost:4000/api/articulos?categoria=${category}&limit=100`
-        : 'http://localhost:4000/api/articulos?limit=100';
+        ? `${API_URL}/articulos?categoria=${category}&limit=100`
+        : `${API_URL}/articulos?limit=100`;
       
       const response = await fetch(url);
       const data = await response.json();

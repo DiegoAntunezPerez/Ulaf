@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { API_URL } from '../../utils/constants';
 import useCartStore from '../../store/cartStore';
 import useFavoritesStore from '../../store/favoritesStore';
 import './ProductDetail.css';
@@ -19,7 +20,7 @@ const ProductDetail = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:4000/api/articulos/${id}`);
+        const response = await fetch(`${API_URL}/articulos/${id}`);
         const data = await response.json();
         setProduct(data);
       } catch (error) {

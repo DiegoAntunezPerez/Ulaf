@@ -5,12 +5,22 @@
 
 ---
 
-## Instalación y Configuración
+## 🌐 Deployment en Producción
+
+La aplicación está desplegada y disponible en:
+
+- **Frontend**: https://ulaf.netlify.app
+- **Backend API**: https://ulaf-cwvp.onrender.com/api
+- **Repositorio GitHub**: https://github.com/DiegoAntunezPerez/Ulaf.git
+
+---
+
+## Instalación y Configuración Local
 
 ### Clona el repositorio
 
 ```bash
-git clone git https://github.com/DiegoAntunezPerez/Ulaf
+git clone https://github.com/DiegoAntunezPerez/Ulaf.git
 cd "Proyecto Final"
 ```
 
@@ -22,8 +32,6 @@ npm install
 npm run dev
 ```
 
-El frontend se ejecutará en **http://localhost:5173**
-
 ### Backend
 
 ```bash
@@ -32,7 +40,7 @@ npm install
 node index.js
 ```
 
-El backend se ejecutará en **http://localhost:4000**
+> **Nota**: Para desarrollo local, necesitarás configurar las variables de entorno en archivos `.env` tanto en frontend como backend (ver sección de variables de entorno más abajo).
 
 ## Credenciales de Administrador
 
@@ -41,7 +49,7 @@ Usuario: admin@test.com
 Contraseña: Admin1234
 ```
 
-> **Ruta de admin:** http://localhost:5173/admin
+> **Ruta de admin:** `/admin`
 >
 > **Funcionalidades disponibles:**
 >

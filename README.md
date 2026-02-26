@@ -183,7 +183,7 @@ La aplicación cuenta con **múltiples páginas**, gestionadas con `react-router
 
 ### Librerias no vistas:
 
-- Cors, Multer y Zustand
+- Multer y Zustand
 
 ---
 

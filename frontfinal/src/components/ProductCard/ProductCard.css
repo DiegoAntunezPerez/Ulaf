@@ -1,0 +1,242 @@
+.product-card {
+  position: relative;
+  background-color: var(--color-bg-primary);
+  transition: opacity 0.2s;
+}
+
+.product-card:hover {
+  opacity: 0.95;
+}
+
+.product-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Imagen */
+.product-image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 150%;
+  background-color: var(--color-bg-secondary);
+  overflow: hidden;
+  margin-bottom: var(--spacing-sm);
+}
+
+.product-skeleton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-skeleton::after {
+  content: '';
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--color-border-light);
+  border-top-color: var(--color-text-primary);
+  border-radius: 50%;
+  animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.product-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+
+.product-image-loaded {
+  opacity: 1;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+/* Botón favorito */
+.product-favorite {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  background-color: var(--color-bg-primary);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+  z-index: 10;
+  color: var(--color-text-primary);
+}
+
+.product-card:hover .product-favorite {
+  opacity: 1;
+}
+
+.product-favorite:hover {
+  transform: scale(1.1);
+}
+
+.product-favorite-active {
+  opacity: 1;
+  color: var(--color-error);
+}
+
+.favorite-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.favorite-icon-outline {
+  stroke: var(--color-text-primary);
+}
+
+.product-favorite:not(.product-favorite-active) .favorite-icon {
+  opacity: 0.8;
+}
+
+.product-favorite-active .favorite-icon {
+  opacity: 1;
+}
+
+.product-favorite:hover .favorite-icon {
+  opacity: 1;
+}
+
+/* Badges */
+.product-badge {
+  position: absolute;
+  top: var(--spacing-sm);
+  left: var(--spacing-sm);
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-secondary);
+  z-index: 5;
+}
+
+.product-badge-sold-out {
+  background-color: #6b7280;
+  top: auto;
+  bottom: var(--spacing-sm);
+}
+
+.product-badge-low-stock {
+  background-color: #f59e0b;
+  top: auto;
+  bottom: var(--spacing-sm);
+  font-size: 9px;
+  padding: 3px 6px;
+}
+
+/* Información */
+.product-info {
+  padding: 0 4px;
+}
+
+.product-name {
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+  height: 2.6em;
+  overflow: hidden;
+}
+
+.product-brand {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin: 0 0 2px 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.product-category {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--spacing-xs) 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Precio */
+.product-price-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-xs);
+}
+
+.product-price {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* Tallas */
+.product-sizes {
+  display: flex;
+  gap: 4px;
+  margin-top: var(--spacing-xs);
+}
+
+.product-size {
+  font-size: 10px;
+  padding: 2px 6px;
+  border: 1px solid var(--color-border-medium);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  position: relative;
+}
+
+.product-size-disabled {
+  color: var(--color-border-light);
+  border-color: var(--color-border-light);
+  opacity: 0.5;
+  text-decoration: line-through;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .product-name {
+    font-size: 13px;
+  }
+
+  .product-category {
+    font-size: 11px;
+  }
+
+  .product-price {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,101 @@
+ID cliente,Nombre del cliente,Email,Telefono,Ciudad,Direccion
+1,Juan Pérez,juan.perez@gmail.com,612345678,Madrid,"Calle Mayor 12, 8f"
+2,María González,maria.g@gmail.com,623456789,Barcelona,"Avenida de la Constitución 45,2a"
+3,Carlos Rodríguez,carlosr@gmail.com,634567890,Madrid,"Calle Alcalá 128, 5b"
+4,Laura Martínez,laura.m@gmail.com,645678901,Valencia,Calle Gran Vía 56
+5,Roberto Sánchez,roberto.s@gmail.com,656789012,Sevilla,"Avenida del Mediterráneo 89, 3c"
+6,Ana López,ana.l@gmail.com,667890123,Madrid,Calle San Juan 7
+7,Javier Torres,javier.t@gmail.com,678901234,Barcelona,"Calle Real 33, 1a"
+8,Isabel Ramírez,isabel.r@gmail.com,689012345,Zaragoza,Avenida de América 102
+9,Alejandro Fernández,alejandro.f@gmail.com,691234567,Málaga,"Calle del Sol 18, 6b"
+10,Laura Díaz,laura.d@gmail.com,602345678,Madrid,Calle Libertad 41
+11,Andrés Silva,andres.s@gmail.com,613456789,Valencia,Avenida de Andalucía 67
+12,Patricia López,patricia.l@gmail.com,624567890,Barcelona,"Calle Luna 5, 6"
+13,Ricardo García,ricardo.g@gmail.com,635678901,Murcia,Calle Velázquez 90
+14,Gabriela Ruiz,gabriela.r@gmail.com,646789012,Madrid,"Avenida de la Paz 14,18a"
+15,José Martínez,jose.m@gmail.com,657890123,Sevilla,Calle Cervantes 22
+16,Marta Fernández,marta.f@gmail.com,668901234,Palma,Calle Colón 76
+17,Alejandro Díaz,alejandro.d@gmail.com,679012345,Madrid,Avenida del Parque 3
+18,Laura Herrera,laura.h@gmail.com,690123456,Barcelona,"Calle Jardines 29, 2d"
+19,Javier Sánchez,javier.s@gmail.com,601234567,Ponferrada,"Calle Ramón y Cajal 84,5"
+20,Carolina Gómez,carolina.g@gmail.com,612345679,Bilbao,"Avenida de Europa 55, 8"
+21,Sergio Ramírez,sergio.r@gmail.com,623456780,Madrid,Calle Castilla 11
+22,Carolina Martínez,carolina.m@gmail.com,634567891,Valencia,"Calle Aragón 64,7b"
+23,Juan Carlos Gómez,juan.g@gmail.com,645678902,Alicante,Avenida de los Reyes 97
+24,Gabriela Torres,gabriela.t@gmail.com,656789013,Madrid,Calle Olmo 6
+25,Sebastián López,sebastian.l@gmail.com,667890124,Barcelona,Calle Pino 38
+26,Valeria Rodríguez,valeria.r@gmail.com,678901235,Córdoba,Avenida del Puerto 121
+27,José Luis Martínez,joseluis.m@gmail.com,689012346,Valladolid,Calle Laurel 15
+28,Carolina Silva,carolina.s@gmail.com,691234568,Madrid,Calle Roble 48
+29,Alejandro González,alejandro.g@gmail.com,602345679,Vigo,"Calle Olivar 27, 5c"
+30,Laura Sánchez,laura.s@gmail.com,613456780,Gijón,Avenida Central 70
+31,Martín Herrera,martin.h@gmail.com,624567891,Madrid,"Calle Marqués de Urquijo 19, 1d"
+32,Paola Rodríguez,paola.r@gmail.com,635678902,Hospitalet de Llobregat,Calle Doctor Fleming 83
+33,Francisco Díaz,francisco.d@gmail.com,646789013,A Coruña,"Avenida del Trabajo 52, 3a"
+34,Andrea Martínez,andrea.m@gmail.com,657890124,Madrid,Calle Goya 101
+35,Luisa Fernández,luisa.f@gmail.com,668901235,Vitoria-Gasteiz,Calle Princesa 9
+36,Ricardo Sánchez,ricardo.s@gmail.com,679012346,Granada,"Calle Huertas 44, 3"
+37,Valentina Gómez,valentina.g@gmail.com,690123457,Madrid,Avenida del Norte 68
+38,Eduardo Torres,eduardo.t@gmail.com,601234568,Elche,Calle Naranjo 17
+39,Sofía Martínez,sofia.m@gmail.com,612345680,Oviedo,Calle Azahar 26
+40,Alejandro Ramírez,alejandro.r@gmail.com,623456781,Madrid,Avenida del Sur 94
+41,Daniela Gutiérrez,daniela.g@gmail.com,634567892,Badalona,Calle Mayorazgo 31
+42,Guillermo López,guillermo.l@gmail.com,645678903,Cartagena,Calle Molino 13
+43,María José Ramírez,mariajose.r@gmail.com,656789014,Madrid,"Calle Río Duero 59, 2"
+44,Francisco Sánchez,francisco.s@gmail.com,667890125,Terrassa,Avenida de Castilla 88
+45,Valeria González,valeria.g@gmail.com,678901236,Jerez de la Frontera,Calle Hernán Cortés 24
+46,Javier Martínez,javier.m@gmail.com,689012347,Madrid,"Calle Reyes Católicos 66,6b"
+47,Adriana Díaz,adriana.d@gmail.com,691234569,Sabadell,Avenida del Progreso 40
+48,Alejandro Torres,alejandro.t@gmail.com,602345680,Móstoles,Calle Encinas 8
+49,Carla Fernández,carla.f@gmail.com,613456781,Madrid,Calle Madroño 36
+50,Manuel Gómez,manuel.g@gmail.com,624567892,Alcalá de Henares,"Avenida del Carmen 71,1c"
+51,Roberto Díaz,roberto.d@gmail.com,635678903,Pamplona,Calle Montevideo 10
+52,Ana Sofía Martínez,anasofia.m@gmail.com,646789014,Madrid,"Calle Segovia 62, 3"
+53,Diego Ramírez,diego.r@gmail.com,657890125,Fuenlabrada,Avenida del Prado 95
+54,Gabriela López,gabriela.l@gmail.com,668901236,Almería,Calle Amapola 21
+55,Martín Gómez,martin.g@gmail.com,679012347,Madrid,"Calle Girasol 34,1c"
+56,Carolina Ramírez,carolina.r@gmail.com,690123458,Leganés,"Avenida del Camino 77,3a"
+57,Javier Torres,javier.t@gmail.com,601234569,San Sebastián,Calle Sierra Nevada 6
+58,Valentina Martínez,valentina.m@gmail.com,612345681,Madrid,Calle Valle Inclán 49
+59,Alejandro Díaz,alejandro.d@gmail.com,623456782,Santander,Avenida de la Industria 82
+60,María José Gutiérrez,mariajose.g@gmail.com,634567893,Burgos,Calle Nogal 12
+61,Andrea Sánchez,andrea.s@gmail.com,645678904,Madrid,Calle Mirador 57
+62,Sebastián Ramírez,sebastian.r@gmail.com,656789015,Albacete,"Calle Castaños 20, 6"
+63,Sofía Martínez,sofia.m@gmail.com,667890126,Castellón de la Plana,Avenida del Olivo 99
+64,Carlos López,carlos.l@gmail.com,678901237,Madrid,Calle Pizarro 35
+65,Valentina Gómez,valentina.g@gmail.com,689012348,Getafe,"Calle Espronceda 16, 9a"
+66,Andrés Díaz,andres.d@gmail.com,691234570,Salamanca,Avenida del Atlántico 73
+67,Carolina Torres,carolina.t@gmail.com,602345681,Madrid,Calle Tajo 28
+68,Eduardo Martínez,eduardo.m@gmail.com,613456782,Huelva,"Calle Miño 54, 5h"
+69,Daniela Gutiérrez,daniela.g@gmail.com,624567893,Logroño,Avenida de los Pinos 91
+70,Juan Martínez,juan.m@gmail.com,635678904,Madrid,Calle Guadiana 14
+71,María Fernández,maria.f@gmail.com,646789015,Badajoz,Calle Travesía Alta 5
+72,Roberto Gómez,roberto.g@gmail.com,657890126,León,"Avenida del Río 63, 4a"
+73,Valeria Díaz,valeria.d@gmail.com,668901237,Madrid,Calle Poeta Lorca 42
+74,Francisco Martínez,francisco.m@gmail.com,679012348,Tarragona,Calle Alameda 19
+75,Ana Torres,ana.t@gmail.com,690123459,Lleida,Avenida del Mirador 86
+76,Diego Gutiérrez,diego.g@gmail.com,601234570,Madrid,Calle Abedul 11
+77,Carolina Díaz,carolina.d@gmail.com,612345682,Marbella,"Calle Jazmín 25, 6d"
+78,Alejandro Ramírez,alejandro.r@gmail.com,623456783,Dos Hermanas,Avenida de las Flores 58
+79,Laura Martínez,laura.m@gmail.com,634567894,Madrid,Calle Encinares 4
+80,José Torres,jose.t@gmail.com,645678905,Torrejón de Ardoz,Calle Valverde 47
+81,Marta Díaz,marta.d@gmail.com,656789016,Parla,Avenida del Bosque 92
+82,Santiago Gómez,santiago.g@gmail.com,667890127,Madrid,"Calle Limonero 8, 4c"
+83,Valentina Ramírez,valentina.r@gmail.com,678901238,Mataró,Calle Laurel Alto 39
+84,Eduardo Gutiérrez,eduardo.g@gmail.com,689012349,Santa Cruz de Tenerife,Avenida del Mar 75
+85,Sofía Torres,sofia.t@gmail.com,691234571,Madrid,Calle Horizonte 9
+86,Javier Díaz,javier.d@gmail.com,602345682,Jaén,"Calle Estrella 61, 7a"
+87,Gabriela Martínez,gabriela.m@gmail.com,613456783,Algeciras,Avenida del Lago 84
+88,Alejandro Torres,alejandro.t@gmail.com,624567894,Madrid,Calle del Mercado 27
+89,Martina Gómez,martina.g@gmail.com,635678905,Cádiz,Avenida de la Estación 12
+90,Andrés Díaz,andres.d@gmail.com,646789016,Reus,"Calle Santa Ana 8, 21"
+91,Diego Ramírez,diego.r@gmail.com,657890127,Madrid,Calle del Carmen 45
+92,Carolina Gómez,carolina.g@gmail.com,668901238,Lugo,"Avenida de los Deportes 63, 7 izq"
+93,Javier Martínez,javier.m@gmail.com,679012349,Ourense,Calle Peñalara 19
+94,Valentina Díaz,valentina.d@gmail.com,690123460,Madrid,Calle del Pilar 6
+95,Eduardo Torres,eduardo.t@gmail.com,601234571,Pontevedra,Avenida de la Libertad 88
+96,Marta Gutiérrez,marta.g@gmail.com,612345683,Ferrol,Calle Nueva 14
+97,Alejandro Martínez,alejandro.m@gmail.com,623456784,Madrid,Calle del Castillo 33
+98,Sofía Díaz,sofia.d@gmail.com,634567895,Avilés,Avenida de la Universidad 51
+99,Carlos Gómez,carlos.g@gmail.com,645678906,Soria,Calle del Paseo 72
+100,Valeria Rodríguez,valeria.r@gmail.com,656789017,Madrid,"Calle Ancares 6, 6d"

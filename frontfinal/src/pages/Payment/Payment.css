@@ -1,0 +1,27 @@
+.payment-methods {
+  display: grid;
+  gap: var(--spacing-lg);
+  margin: var(--spacing-xl) 0;
+}
+
+.payment-method {
+  padding: var(--spacing-lg);
+  border: 1px solid var(--color-border-light);
+}
+
+.payment-method h3 {
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.payment-method > p {
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.payment-method .values-list {
+  margin-top: var(--spacing-sm);
+}

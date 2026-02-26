@@ -1,0 +1,36 @@
+.info-section a {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+}
+
+.info-section a:hover {
+  opacity: 0.7;
+}
+
+.info-section p strong {
+  color: var(--color-text-primary);
+  display: inline-block;
+  min-width: 120px;
+}
+
+.values-list {
+  list-style: none;
+  padding: 0;
+}
+
+.values-list li {
+  font-size: var(--font-size-md);
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+  padding-left: var(--spacing-lg);
+  position: relative;
+}
+
+.values-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xl);
+}

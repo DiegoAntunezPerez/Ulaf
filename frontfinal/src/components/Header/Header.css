@@ -151,6 +151,16 @@ body.dark .menu-icon {
   background-color: var(--color-bg-secondary);
 }
 
+/* Admin link específico */
+.admin-link {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.admin-link:hover {
+  opacity: 0.7;
+}
+
 /* Búsqueda expandible */
 .search-expanded {
   padding: var(--spacing-md);

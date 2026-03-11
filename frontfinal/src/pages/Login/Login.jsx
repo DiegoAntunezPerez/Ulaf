@@ -1,17 +1,27 @@
 import './Login.css';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { API_URL } from '../../utils/constants';
 import useAuthStore from '../../store/authStore';
 
 const Login = () => {
-  const { handleSubmit, register, formState } = useForm();
+  const { handleSubmit, register, formState, setValue } = useForm();
   const [serverError, setServerError] = useState('');
   const [success, setSuccess] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const setUser = useAuthStore((state) => state.setUser);
   const setIsAuthenticated = useAuthStore((state) => state.setIsAuthenticated);
   const navigate = useNavigate();
+
+  // Cargar email guardado al montar el componente
+  useEffect(() => {
+    const savedEmail = localStorage.getItem('rememberedEmail');
+    if (savedEmail) {
+      setValue('email', savedEmail);
+      setRememberMe(true);
+    }
+  }, [setValue]);
 
   const onSubmit = async (data) => {
     setServerError('');
@@ -27,6 +37,12 @@ const Login = () => {
         setServerError(result?.message || 'Error al iniciar sesión');
       } else {
         setSuccess(true);
+        // Guardar o borrar email según checkbox
+        if (rememberMe) {
+          localStorage.setItem('rememberedEmail', data.email);
+        } else {
+          localStorage.removeItem('rememberedEmail');
+        }
         // Guardar usuario y token en Zustand y localStorage
         setUser(result.user);
         setIsAuthenticated(true);
@@ -72,12 +88,22 @@ const Login = () => {
           />
           {formState.errors.password && <p className="error">{formState.errors.password.message}</p>}
 
+          <div className="remember-me">
+            <input
+              type="checkbox"
+              id="rememberMe"
+              checked={rememberMe}
+              onChange={(e) => setRememberMe(e.target.checked)}
+            />
+            <label htmlFor="rememberMe">Recordar mi email</label>
+          </div>
+
           <button type="submit" className="register-btn">INICIAR SESIÓN</button>
         </form>
 
         <div className="login-links-centered">
           <Link to="/register" className="login-link-create">¿No tienes cuenta? <b>Crear cuenta</b></Link>
-          <span className="login-link-help">¿Olvidaste tu contraseña?</span>
+          <Link to="/forgot-password" className="login-link-help">¿Olvidaste tu contraseña?</Link>
         </div>
       </div>
       <div className="register-side-image">

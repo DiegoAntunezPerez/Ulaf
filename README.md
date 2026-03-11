@@ -67,13 +67,18 @@ Contraseña: Admin1234
 - 🔍 Búsqueda de productos por nombre
 - 📂 Filtrado por categoría (10 categorías disponibles)
 - 🛒 Carrito de compras
-- ❤️ Sistema de favoritos
+- ❤️ Sistema de favoritos con autenticación requerida
 - 👤 Registro e inicio de sesión
 - 🔐 Autenticación con JWT
+- 💾 Recordar email en login
+- 📧 Recuperación de contraseña
+- ✅ Registro con login automático
 - 🌙 Tema claro/oscuro dinámico
 - 📱 Diseño 100% responsive
 - 📄 Página de detalle de producto
-- 💳 Proceso de checkout completo
+- 💳 Mock de checkout con confirmación de compra
+- 🧹 Logout limpia carrito y favoritos automáticamente
+- 🔒 Login requerido para añadir favoritos
 ```
 
 ### 👨‍💼 Administrador
@@ -82,9 +87,14 @@ Contraseña: Admin1234
 - ➕ Crear productos con upload de imágenes
 - 🖼️ Integración con Cloudinary
 - 📊 Gestión de stock por tallas (S, M, L, XL)
-- ✏️ Edición de productos existentes
+- ✏️ Edición de productos (precio + stock)
 - 🗑️ Eliminación de productos
 - 🔒 Acceso protegido mediante roles
+- 👥 Gestión de clientes (CRUD completo)
+- 💰 Gestión de ventas (CRUD completo)
+- 🚫 Prevención de productos duplicados
+- 📋 Panel con 4 tabs (Artículos, Clientes, Ventas, Gestionar Productos)
+- 🎯 UI diferenciada (sin carrito ni favoritos)
 ```
 
 ---
@@ -116,11 +126,19 @@ La aplicación cuenta con **múltiples páginas**, gestionadas con `react-router
   - Formulario de inicio de sesión
   - Validación con React Hook Form
   - Gestión de errores
+  - Opción "Recordar mi email"
 
 - **Registro (`/register`)**
   - Formulario de creación de cuenta
   - Validación de campos
   - Registro en base de datos
+  - Login automático tras registro exitoso
+  - Scroll automático a mensajes de error/éxito
+
+- **Recuperar Contraseña (`/forgot-password`)**
+  - Formulario de recuperación
+  - Envío de email (simulado)
+  - Validación de email
 - **Articulos (`/category/Abrigos, /Camisas, /Camisetas, /Cazadora, /Conjuntos, / Pantalones, /Punto, /Sudaderas, /Tops, /Vestidos`)**
 - **Footers (`/sobre-nosotros, /ayuda, /contacto, etc...`) Total 12**
 
@@ -150,10 +168,12 @@ La aplicación cuenta con **múltiples páginas**, gestionadas con `react-router
 ### Administración (requiere rol admin)
 
 - **Panel Admin (`/admin`)**
-  - Crear nuevos productos
-  - Upload de imágenes desde local
+  - **Tab 1: Crear Artículo** - Formulario completo con upload de imágenes
+  - **Tab 2: Crear Cliente** - Formulario de registro de clientes
+  - **Tab 3: Crear Venta** - Formulario de registro de ventas
+  - **Tab 4: Gestionar Productos** - Tabla con edición inline (precio, stock S/M/L/XL) y eliminación
   - Preview de imagen en tiempo real
-  - Gestión completa de stock
+  - Validación de duplicados
 
 ---
 
@@ -237,7 +257,9 @@ src/
 ├── api/
 │   ├── controllers/      # Lógica de negocio
 │   │   ├── articuloController.js
-│   │   └── userController.js
+│   │   ├── userController.js
+│   │   ├── clienteController.js
+│   │   └── ventaController.js
 │   ├── models/          # Modelos de Mongoose
 │   │   ├── Articulo.js
 │   │   ├── Cliente.js
@@ -245,7 +267,9 @@ src/
 │   │   └── Venta.js
 │   └── routes/          # Definición de rutas
 │       ├── articulo.js
-│       └── user.js
+│       ├── user.js
+│       ├── cliente.js
+│       └── venta.js
 ├── config/              # Configuraciones
 │   ├── cloudinary.js    # Setup de Cloudinary
 │   └── db.js            # Conexión MongoDB
@@ -287,6 +311,7 @@ src/
    - Elimina token de localStorage
    - Limpia estado de Zustand
    - Vacía carrito automáticamente
+   - Limpia favoritos del localStorage
    - Redirecciona a home
 
 ---
@@ -295,23 +320,43 @@ src/
 
 ### Artículos
 
-```
-GET    /api/articulos              # Listar todos
-GET    /api/articulos/search       # Buscar y filtrar
-GET    /api/articulos/:id          # Detalle de un artículo
-POST   /api/articulos              # Crear (admin)
-PUT    /api/articulos/:id          # Editar (admin)
-DELETE /api/articulos/:id          # Eliminar (admin)
-```
+| Método | Endpoint                | Descripción                                           | Autenticación |
+| ------ | ----------------------- | ----------------------------------------------------- | ------------- |
+| GET    | `/api/articulos`        | Listar todos los artículos (con paginación y filtros) | No            |
+| GET    | `/api/articulos/search` | Buscar y filtrar artículos                            | No            |
+| GET    | `/api/articulos/:id`    | Obtener detalle de un artículo                        | No            |
+| POST   | `/api/articulos`        | Crear nuevo artículo                                  | Admin         |
+| PUT    | `/api/articulos/:id`    | Editar artículo existente                             | Admin         |
+| DELETE | `/api/articulos/:id`    | Eliminar artículo                                     | Admin         |
 
 ### Usuarios
 
-```
-POST   /api/users/register         # Registro de usuario
-POST   /api/users/login            # Inicio de sesión
-GET    /api/users/verify           # Verificar token
-GET    /api/users/profile          # Perfil del usuario (auth)
-```
+| Método | Endpoint              | Descripción                | Autenticación |
+| ------ | --------------------- | -------------------------- | ------------- |
+| POST   | `/api/users/register` | Registrar nuevo usuario    | No            |
+| POST   | `/api/users/login`    | Iniciar sesión             | No            |
+| GET    | `/api/users/verify`   | Verificar token JWT        | Token         |
+| GET    | `/api/users/profile`  | Obtener perfil del usuario | Token         |
+
+### Clientes
+
+| Método | Endpoint            | Descripción                | Autenticación |
+| ------ | ------------------- | -------------------------- | ------------- |
+| GET    | `/api/clientes`     | Listar todos los clientes  | Token         |
+| GET    | `/api/clientes/:id` | Obtener detalle de cliente | Token         |
+| POST   | `/api/clientes`     | Crear nuevo cliente        | Token         |
+| PUT    | `/api/clientes/:id` | Editar cliente             | Token         |
+| DELETE | `/api/clientes/:id` | Eliminar cliente           | Admin         |
+
+### Ventas
+
+| Método | Endpoint          | Descripción              | Autenticación |
+| ------ | ----------------- | ------------------------ | ------------- |
+| GET    | `/api/ventas`     | Listar todas las ventas  | Admin         |
+| GET    | `/api/ventas/:id` | Obtener detalle de venta | Admin         |
+| POST   | `/api/ventas`     | Crear nueva venta        | Token         |
+| PUT    | `/api/ventas/:id` | Editar venta             | Admin         |
+| DELETE | `/api/ventas/:id` | Eliminar venta           | Admin         |
 
 ---
 
@@ -320,9 +365,15 @@ GET    /api/users/profile          # Perfil del usuario (auth)
 - El proyecto utiliza **MongoDB** como base de datos
 - Las imágenes se almacenan en **Cloudinary** (no en servidor)
 - El **carrito se vacía automáticamente** al hacer logout
-- Los **favoritos persisten** entre sesiones
+- Los **favoritos se limpian** al hacer logout (localStorage)
 - El **tema se guarda** en localStorage
 - El administrador puede **subir imágenes directamente** desde su equipo
+- Los **productos no se pueden duplicar** (validación por código y por nombre+marca)
+- El **checkout es un mock** (no procesa pagos reales, solo vacía el carrito)
+- El **email de login se puede recordar** (guardado en localStorage)
+- **Admin no ve carrito ni favoritos** (UI diferenciada por rol)
+- Los **usuarios deben estar logueados** para añadir favoritos
+- El **límite de productos es 1000** en todas las páginas (no 10)
 
 ---
 
@@ -339,9 +390,7 @@ GET    /api/users/profile          # Perfil del usuario (auth)
 
 ---
 
-##
-
-## 👨‍💻 Autor
+## �‍💻 Autor
 
 **Proyecto Fullstack realizado por [Diego Antúnez Pérez]**
 

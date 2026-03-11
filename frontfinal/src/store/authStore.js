@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { login as loginService, register as registerService, logout as logoutService, getCurrentUser, isAuthenticated } from '../services/authService';
 import useCartStore from './cartStore';
+import useFavoritesStore from './favoritesStore';
 
 const useAuthStore = create((set) => ({
   user: getCurrentUser(),
@@ -49,8 +50,12 @@ const useAuthStore = create((set) => ({
 
   logout: () => {
     logoutService();
-    // Limpiamos el carrito al cerrar sesión
+    // Limpiamos el carrito y favoritos al cerrar sesión
     useCartStore.getState().clearCart();
+    useFavoritesStore.getState().clearFavorites();
+    // Forzar limpieza del localStorage para asegurar que se borren 
+    localStorage.removeItem('cart-storage');
+    localStorage.removeItem('favorites-storage');
     set({ 
       user: null, 
       isAuthenticated: false, 

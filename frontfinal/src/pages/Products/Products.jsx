@@ -15,8 +15,8 @@ const Products = () => {
     try {
       setLoading(true);
       const url = category 
-        ? `${API_URL}/articulos?categoria=${category}&limit=100`
-        : `${API_URL}/articulos?limit=100`;
+        ? `${API_URL}/articulos?categoria=${category}&limit=1000`
+        : `${API_URL}/articulos?limit=1000`;
       
       const response = await fetch(url);
       const data = await response.json();

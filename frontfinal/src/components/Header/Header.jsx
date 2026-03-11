@@ -83,13 +83,22 @@ const Header = () => {
               <span className="action-text">BUSCAR</span>
             </button>
 
-            {/* Carrito */}
-            <Link to="/cart" className="cart-btn">
-              <img src="/cesta.svg" alt="Carrito" className="icon" />
-              <span className="action-text">
-                CESTA [{cartCount}]
-              </span>
-            </Link>
+            {/* Panel Admin - Solo visible para admins */}
+            {isAuthenticated && user && user.rol === 'admin' && (
+              <Link to="/admin" className="action-btn admin-link">
+                <span className="action-text">PANEL ADMIN</span>
+              </Link>
+            )}
+
+            {/* Carrito - Solo visible para usuarios normales (no admins) */}
+            {(!isAuthenticated || (user && user.rol !== 'admin')) && (
+              <Link to="/cart" className="cart-btn">
+                <img src="/cesta.svg" alt="Carrito" className="icon" />
+                <span className="action-text">
+                  CESTA [{cartCount}]
+                </span>
+              </Link>
+            )}
 
             {/* Login/Usuario */}
             {isAuthenticated ? (
@@ -102,12 +111,10 @@ const Header = () => {
                 </button>
                 {isUserMenuOpen && (
                   <div className="user-dropdown">
-                    <Link to="/favorites" className="dropdown-item" onClick={() => setIsUserMenuOpen(false)}>
-                      Favoritos
-                    </Link>
-                    {user && user.rol === 'admin' && (
-                      <Link to="/admin" className="dropdown-item" onClick={() => setIsUserMenuOpen(false)}>
-                        Panel Admin
+                    {/* Favoritos - Solo para usuarios normales */}
+                    {user && user.rol !== 'admin' && (
+                      <Link to="/favorites" className="dropdown-item" onClick={() => setIsUserMenuOpen(false)}>
+                        Favoritos
                       </Link>
                     )}
                     <button onClick={handleLogout} className="dropdown-item">

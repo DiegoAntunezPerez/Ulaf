@@ -8,6 +8,7 @@ import Products from './pages/Products/Products';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import Cart from './pages/Cart/Cart';
 import Admin from './pages/Admin/Admin';
 import Category from './pages/Category/Category';
@@ -61,6 +62,7 @@ function App() {
           <Route path="/category/:categoryName" element={<Category />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
 
           {/* rutas privadas */}
           <Route 

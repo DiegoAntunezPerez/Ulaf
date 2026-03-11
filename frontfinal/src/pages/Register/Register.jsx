@@ -1,13 +1,25 @@
 import './Register.css';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../../utils/constants';
+import useAuthStore from '../../store/authStore';
 
 const Register = () => {
-  const { handleSubmit, register, formState } = useForm();
-
+  const { handleSubmit, register, formState, reset } = useForm();
   const [serverError, setServerError] = useState('');
   const [success, setSuccess] = useState(false);
+  const messageRef = useRef(null);
+  const navigate = useNavigate();
+  const setUser = useAuthStore((state) => state.setUser);
+  const setIsAuthenticated = useAuthStore((state) => state.setIsAuthenticated);
+
+  // Scroll automático al mensaje cuando aparece
+  useEffect(() => {
+    if ((serverError || success) && messageRef.current) {
+      messageRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [serverError, success]);
 
   const onSubmit = async (data) => {
     setServerError('');
@@ -20,9 +32,45 @@ const Register = () => {
       });
       const result = await response.json();
       if (!response.ok) {
-        setServerError(result?.msg || 'Error en el registro');
+        // Mostrar mensaje de error específico del servidor
+        const errorMessage = result?.msg || result?.message || result?.error || 'Error en el registro';
+        // Si hay detalles adicionales (como campo específico), agregarlos
+        const errorDetails = result?.errors ? `: ${Object.values(result.errors).join(', ')}` : '';
+        setServerError(errorMessage + errorDetails);
       } else {
         setSuccess(true);
+        reset(); // Limpiar el formulario
+        
+        // Login automático después del registro
+        try {
+          const loginResponse = await fetch(`${API_URL}/users/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: data.email, password: data.password })
+          });
+          const loginResult = await loginResponse.json();
+          if (loginResponse.ok) {
+            // Guardar usuario y token
+            setUser(loginResult.user);
+            setIsAuthenticated(true);
+            localStorage.setItem('token', loginResult.token);
+            localStorage.setItem('user', JSON.stringify(loginResult.user));
+            // Redirigir a productos tras 1.5 segundos (tiempo para ver mensaje)
+            setTimeout(() => {
+              navigate('/products');
+            }, 1500);
+          } else {
+            // Si falla el login automático, redirigir a login
+            setTimeout(() => {
+              navigate('/login');
+            }, 2000);
+          }
+        } catch {
+          // Si falla el login automático, redirigir a login
+          setTimeout(() => {
+            navigate('/login');
+          }, 2000);
+        }
       }
     } catch {
       setServerError('Error de conexión con el servidor');
@@ -34,8 +82,33 @@ const Register = () => {
       <div className="register-form-wrapper">
         <h2 className="register-title">Crea tu cuenta</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="register-form">
-          {serverError && <p className="error">{serverError}</p>}
-          {success && <p style={{color: 'green'}}>¡Registro exitoso! Ya puedes iniciar sesión.</p>}
+          <div ref={messageRef}>
+            {serverError && (
+              <p className="error" style={{
+                padding: '12px',
+                backgroundColor: '#ffebee',
+                border: '1px solid #ef5350',
+                marginBottom: '16px',
+                borderRadius: '4px'
+              }}>
+                {serverError}
+              </p>
+            )}
+            {success && (
+              <p style={{
+                color: '#2e7d32',
+                backgroundColor: '#e8f5e9',
+                padding: '12px',
+                border: '1px solid #4caf50',
+                marginBottom: '16px',
+                textAlign: 'center',
+                fontWeight: '500',
+                borderRadius: '4px'
+              }}>
+                ✓ ¡Registro exitoso! Iniciando sesión...
+              </p>
+            )}
+          </div>
           <label htmlFor="nombre">Nombre</label>
           <input
             {...register('nombre', {

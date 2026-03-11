@@ -390,7 +390,7 @@ src/
 
 ---
 
-## �‍💻 Autor
+##  Autor
 
 **Proyecto Fullstack realizado por [Diego Antúnez Pérez]**
 

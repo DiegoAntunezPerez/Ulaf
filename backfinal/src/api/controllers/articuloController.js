@@ -18,6 +18,16 @@ const postArticulo = async (req, res, next) => {
       descripcion: req.body.descripcion?.trim()
     };
     
+    // Validar que no exista un producto con el mismo nombre y marca
+    const productoExistente = await Articulo.findOne({
+      nombre: articuloData.nombre,
+      marca: articuloData.marca
+    });
+    
+    if (productoExistente) {
+      return res.status(400).json({ error: `Ya existe un producto "${articuloData.nombre}" de la marca "${articuloData.marca}". No puedes crear productos duplicados.` });
+    }
+    
     // Prioridad 1: Archivo subido (Cloudinary)
     if (req.file) {
       articuloData.imagen = req.file.path;
@@ -41,12 +51,21 @@ const postArticulo = async (req, res, next) => {
     const newArticulo = new Articulo(articuloData);
     const savedArticulo = await newArticulo.save();
     if (!savedArticulo) {
-      return res.status(400).json('El artículo no ha sido creado');
+      return res.status(400).json({ error: 'El artículo no ha sido creado' });
     }
     return res.status(201).json(savedArticulo);
   } catch (error) {
     if (req.file) {
       await deleteFile(req.file.path);
+    }
+    // Error de código duplicado (E11000)
+    if (error.code === 11000) {
+      // Extraer el campo duplicado del mensaje de error
+      if (error.message.includes('idArticulo')) {
+        return res.status(400).json({ error: `El código de artículo "${req.body.idArticulo}" ya está registrado. Usa un código diferente.` });
+      }
+      // Por si hay otros índices únicos
+      return res.status(400).json({ error: 'Ya existe un registro con estos datos. Revisa los campos e intenta con valores diferentes.' });
     }
     return next(error);
   }

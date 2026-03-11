@@ -18,8 +18,12 @@ app.use(express.urlencoded({ extended: true }));
 // Rutas
 const userRoutes = require('./src/api/routes/user');
 const articuloRoutes = require('./src/api/routes/articulo');
+const clienteRoutes = require('./src/api/routes/cliente');
+const ventaRoutes = require('./src/api/routes/venta');
 app.use('/api/users', userRoutes);
 app.use('/api/articulos', articuloRoutes);
+app.use('/api/clientes', clienteRoutes);
+app.use('/api/ventas', ventaRoutes);
 
 // Ruta de prueba
 app.get('/', (req, res) => {

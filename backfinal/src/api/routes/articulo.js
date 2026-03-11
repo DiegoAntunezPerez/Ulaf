@@ -19,8 +19,8 @@ router.get('/:id', validateMongoId, articuloController.getArticulo);
 // Crear artículo (solo admin)
 router.post('/', isAuth, isAdmin, uploadProducto.single('imagen'), validateCreateArticulo, articuloController.postArticulo);
 
-// Editar artículo (solo admin)
-router.put('/:id', isAuth, isAdmin, validateMongoId, uploadProducto.single('imagen'), validateUpdateArticulo, articuloController.editArticulo);
+// Editar artículo (solo admin) - sin uploadProducto para permitir actualizaciones JSON
+router.put('/:id', isAuth, isAdmin, validateMongoId, validateUpdateArticulo, articuloController.editArticulo);
 
 // Borrar artículo (solo admin)
 router.delete('/:id', isAuth, isAdmin, validateMongoId, articuloController.deleteArticulo);

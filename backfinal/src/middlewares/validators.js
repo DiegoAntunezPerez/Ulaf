@@ -108,6 +108,18 @@ const validateUpdateArticulo = [
     .optional()
     .trim()
     .isLength({ max: 500 }).withMessage('La descripción no puede superar los 500 caracteres'),
+  body('stock_s')
+    .optional()
+    .isInt({ min: 0 }).withMessage('El stock S debe ser un número entero positivo'),
+  body('stock_m')
+    .optional()
+    .isInt({ min: 0 }).withMessage('El stock M debe ser un número entero positivo'),
+  body('stock_l')
+    .optional()
+    .isInt({ min: 0 }).withMessage('El stock L debe ser un número entero positivo'),
+  body('stock_xl')
+    .optional()
+    .isInt({ min: 0 }).withMessage('El stock XL debe ser un número entero positivo'),
   handleValidationErrors
 ];
 
